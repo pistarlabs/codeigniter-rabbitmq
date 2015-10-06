@@ -7,7 +7,7 @@
  * This message queue library is a wrapper CodeIgniter library using PHP-AMQPLib
  */
 
-require_once __DIR__ . '/../third_party/vendor/autoload.php';
+require_once __DIR__ . '/../third_party/PhpAmqpLib/vendor/autoload.php';
 
 use PhpAmqpLib\Connection\AMQPConnection;
 use PhpAmqpLib\Message\AMQPMessage;
@@ -80,6 +80,19 @@ class Queue {
 
     	$this->channel->exchange_declare($job, 'direct', false, false, false);
     	$this->channel->basic_publish($message, $job, $route);
+    }
+
+
+    /**
+     * Queuing scheduled message
+     *
+     * @param integer $delay
+     * @param array $job
+     * @param array $data
+     * @param string $route
+     */
+    public function later($delay, $job, $data, $route=null) {
+	    // TODO: implement scheduled message
     }
 
     /**

@@ -10,7 +10,8 @@ class Sender extends CI_Controller {
 
 	public function index()
 	{
-		$result = $this->queue->push('', array('name'=>'Jogi Silalahi', 'subject'=>'Testing'), 'email.register');
+		$result = $this->queue->push('hello', array('Hello', 'World'), 'testing.push');
+    var_dump($result);
 	}
 
 }
